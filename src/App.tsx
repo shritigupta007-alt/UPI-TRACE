@@ -11,6 +11,7 @@ import VerificationPage from '@/pages/VerificationPage';
 import ReportsPage from '@/pages/ReportsPage';
 import PrivacyPage from '@/pages/PrivacyPage';
 import TransactionDrawer from '@/components/TransactionDrawer';
+import LoginPage from '@/pages/LoginPage';
 import { Download } from 'lucide-react';
 
 const pageInfo: Record<PageKey, { title: string; breadcrumb: string; subtitle: string }> = {
@@ -24,6 +25,7 @@ const pageInfo: Record<PageKey, { title: string; breadcrumb: string; subtitle: s
 };
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentPage, setCurrentPage] = useState<PageKey>('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
@@ -35,8 +37,12 @@ function App() {
 
   const info = pageInfo[currentPage];
 
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={() => setIsAuthenticated(true)} />;
+  }
+
   return (
-    <div className="flex h-screen overflow-hidden bg-charcoal-800">
+    <div className="flex h-screen overflow-hidden bg-secondary">
       <Sidebar
         current={currentPage}
         onNavigate={handleNavigate}
@@ -49,13 +55,13 @@ function App() {
           pageBreadcrumb={info.breadcrumb}
           onMenuClick={() => setSidebarOpen(true)}
         />
-        <main className="flex-1 overflow-y-auto scrollbar-thin bg-charcoal-800">
+        <main className="flex-1 overflow-y-auto scrollbar-thin bg-secondary">
           <div className="px-4 lg:px-6 py-6 max-w-[1600px] mx-auto">
             <PageHeader
               title={info.title}
               subtitle={info.subtitle}
               actions={
-                <button className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-ivory-500/10 px-3.5 py-2 text-sm text-ivory-500/60 hover:text-ivory-500 hover:border-ivory-500/20 transition-colors">
+                <button className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-border px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground hover:border-navy/30 hover:bg-muted transition-colors">
                   <Download size={14} />
                   Export
                 </button>
