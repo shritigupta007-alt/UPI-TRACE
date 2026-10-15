@@ -3,11 +3,11 @@ import { relativeTime } from '@/lib/utils';
 import { ArrowDownLeft, MessageSquareText, Flag, ShieldCheck, FileText } from 'lucide-react';
 
 const typeConfig: Record<ActivityFeedItem['type'], { icon: typeof ArrowDownLeft; color: string; bg: string; border: string; label: string }> = {
-  incoming: { icon: ArrowDownLeft, color: 'text-sage-300', bg: 'bg-sage-500/8', border: 'border-sage-700/20', label: 'Incoming' },
-  response: { icon: MessageSquareText, color: 'text-ivory-500/70', bg: 'bg-graphite-700/40', border: 'border-ivory-500/8', label: 'Response' },
-  flag: { icon: Flag, color: 'text-alert-red', bg: 'bg-alert-red/8', border: 'border-alert-red/20', label: 'Flag' },
-  verification: { icon: ShieldCheck, color: 'text-gold-300', bg: 'bg-gold-500/8', border: 'border-gold-700/20', label: 'Verification' },
-  report: { icon: FileText, color: 'text-ivory-500/60', bg: 'bg-graphite-700/30', border: 'border-ivory-500/6', label: 'Report' },
+  incoming: { icon: ArrowDownLeft, color: 'text-ieee', bg: 'bg-ieee-light', border: 'border-ieee/20', label: 'Incoming' },
+  response: { icon: MessageSquareText, color: 'text-slate-700', bg: 'bg-slate-100', border: 'border-slate-200', label: 'Response' },
+  flag: { icon: Flag, color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200', label: 'Flag' },
+  verification: { icon: ShieldCheck, color: 'text-amber-dark', bg: 'bg-amber-soft', border: 'border-amber/30', label: 'Verification' },
+  report: { icon: FileText, color: 'text-slate-600', bg: 'bg-slate-100', border: 'border-slate-200', label: 'Report' },
 };
 
 interface ActivityFeedProps {
@@ -27,18 +27,18 @@ export default function ActivityFeed({ items, limit }: ActivityFeedProps) {
           return (
             <li key={item.id} className="relative pb-4 pl-10">
               {!isLast && (
-                <span className="absolute left-[15px] top-7 bottom-0 w-px bg-ivory-500/8" aria-hidden />
+                <span className="absolute left-[15px] top-7 bottom-0 w-px bg-slate-200" aria-hidden />
               )}
-              <span className={`absolute left-0 top-0.5 flex items-center justify-center h-8 w-8 rounded-full border ${cfg.border} ${cfg.bg} ${cfg.color}`}>
-                <Icon size={14} strokeWidth={1.5} />
+              <span className={`absolute left-0 top-0.5 flex items-center justify-center h-8 w-8 rounded-full border ${cfg.border} ${cfg.bg} ${cfg.color} shadow-sm`}>
+                <Icon size={14} strokeWidth={2} />
               </span>
-              <div className="text-sm text-ivory-500/75 leading-snug">{item.summary}</div>
+              <div className="text-sm font-medium text-slate-800 leading-snug">{item.summary}</div>
               <div className="flex items-center gap-2 mt-1">
-                <span className={`text-micro uppercase tracking-wider font-medium ${cfg.color}`}>{cfg.label}</span>
-                <span className="text-micro text-ivory-500/25">&middot;</span>
-                <span className="text-micro text-ivory-500/30 font-mono">{item.ref}</span>
-                <span className="text-micro text-ivory-500/25">&middot;</span>
-                <span className="text-micro text-ivory-500/30">{relativeTime(item.timestamp)}</span>
+                <span className={`text-[10px] uppercase tracking-wider font-semibold ${cfg.color}`}>{cfg.label}</span>
+                <span className="text-xs text-slate-300">&middot;</span>
+                <span className="text-[11px] text-slate-500 font-mono font-medium">{item.ref}</span>
+                <span className="text-xs text-slate-300">&middot;</span>
+                <span className="text-xs text-slate-400">{relativeTime(item.timestamp)}</span>
               </div>
             </li>
           );

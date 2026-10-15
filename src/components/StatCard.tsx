@@ -10,37 +10,58 @@ interface StatCardProps {
 }
 
 const accentMap = {
-  sage: { icon: 'text-sage-500', bg: 'bg-sage-500/8', border: 'border-sage-700/20', glow: 'from-sage-500/5' },
-  gold: { icon: 'text-gold-500', bg: 'bg-gold-500/8', border: 'border-gold-700/20', glow: 'from-gold-500/5' },
-  amber: { icon: 'text-alert-amber', bg: 'bg-alert-amber/8', border: 'border-alert-amber/20', glow: 'from-alert-amber/5' },
-  red: { icon: 'text-alert-red', bg: 'bg-alert-red/8', border: 'border-alert-red/20', glow: 'from-alert-red/5' },
+  sage: {
+    icon: 'text-ieee',
+    bg: 'bg-ieee-light',
+    border: 'border-ieee/20',
+  },
+  gold: {
+    icon: 'text-amber-dark',
+    bg: 'bg-amber-soft',
+    border: 'border-amber/30',
+  },
+  amber: {
+    icon: 'text-amber-dark',
+    bg: 'bg-amber-soft',
+    border: 'border-amber/30',
+  },
+  red: {
+    icon: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
+  },
 };
 
 export default function StatCard({ label, value, icon, trend, accent = 'sage', delay = 0 }: StatCardProps) {
   const ac = accentMap[accent];
   return (
     <div
-      className="group relative overflow-hidden rounded-xl border border-ivory-500/6 bg-graphite-800/40 p-5 transition-all duration-300 ease-smooth hover:border-ivory-500/12 animate-slide-up"
+      className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:border-slate-300"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${ac.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
       <div className="relative">
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-3">
           <div className={`flex items-center justify-center h-10 w-10 rounded-lg border ${ac.border} ${ac.bg} ${ac.icon}`}>
             {icon}
           </div>
           {trend && (
-            <span className={`text-micro font-mono ${
-              trend.direction === 'up' ? 'text-sage-300' : trend.direction === 'down' ? 'text-alert-red' : 'text-ivory-500/40'
-            }`}>
+            <span
+              className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${
+                trend.direction === 'up'
+                  ? 'bg-emerald-light text-emerald border-emerald/20'
+                  : trend.direction === 'down'
+                  ? 'bg-red-50 text-red-600 border-red-200'
+                  : 'bg-slate-100 text-slate-600 border-slate-200'
+              }`}
+            >
               {trend.value}
             </span>
           )}
         </div>
-        <div className="font-serif-heading text-3xl text-ivory-500 leading-none mb-1.5">
+        <div className="font-serif-heading text-3xl font-bold text-navy leading-none mb-1.5 tabular-nums">
           {value}
         </div>
-        <div className="text-sm text-ivory-500/50">{label}</div>
+        <div className="text-xs font-medium uppercase tracking-wider text-slate-500">{label}</div>
       </div>
     </div>
   );

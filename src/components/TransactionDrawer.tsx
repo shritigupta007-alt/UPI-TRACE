@@ -33,34 +33,34 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
   return (
     <>
-      <div className="fixed inset-0 z-50 bg-charcoal-900/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="fixed right-0 inset-y-0 z-50 w-full max-w-md lg:max-w-lg bg-charcoal-800 border-l border-ivory-500/8 flex flex-col shadow-elevated animate-slide-up">
+      <div className="fixed inset-0 z-50 bg-navy-deep/60 backdrop-blur-sm animate-fade-in" onClick={onClose} />
+      <div className="fixed right-0 inset-y-0 z-50 w-full max-w-md lg:max-w-lg bg-white border-l border-slate-200 flex flex-col shadow-2xl animate-slide-up">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-ivory-500/5 flex-shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/70 flex-shrink-0">
           <div className="flex items-center gap-2">
-            <ArrowDownLeft size={16} className="text-sage-500" />
-            <span className="text-sm font-medium text-ivory-500">Transaction Detail</span>
+            <ArrowDownLeft size={18} className="text-ieee" />
+            <span className="text-sm font-bold text-navy">Transaction Detail</span>
           </div>
           <button
             onClick={onClose}
-            className="flex items-center justify-center h-8 w-8 rounded-md text-ivory-500/40 hover:text-ivory-500 hover:bg-ivory-500/5 transition-colors"
+            className="flex items-center justify-center h-8 w-8 rounded-lg text-slate-400 hover:text-navy hover:bg-slate-100 transition-colors"
           >
             <X size={18} />
           </button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto scrollbar-thin px-5 py-5 space-y-5">
+        <div className="flex-1 overflow-y-auto scrollbar-thin px-6 py-6 space-y-6">
           {/* ID & amount */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="font-mono text-sm text-ivory-500/80">{tx.id}</span>
-              <button onClick={copyRef} className="flex items-center justify-center h-6 w-6 rounded text-ivory-500/30 hover:text-sage-300 transition-colors">
-                {copied ? <CheckCircle2 size={12} className="text-sage-300" /> : <Copy size={12} />}
+              <span className="font-mono text-xs font-semibold text-slate-500">{tx.id}</span>
+              <button onClick={copyRef} className="flex items-center justify-center h-6 w-6 rounded text-slate-400 hover:text-ieee transition-colors">
+                {copied ? <CheckCircle2 size={13} className="text-emerald" /> : <Copy size={13} />}
               </button>
             </div>
-            <div className="font-serif-heading text-3xl text-ivory-500 tabular-nums mb-1">{formatCurrency(tx.amount)}</div>
-            <div className="text-sm text-ivory-500/40">{formatDateTime(tx.timestamp)}</div>
+            <div className="font-serif-heading text-3xl font-bold text-navy tabular-nums mb-1">{formatCurrency(tx.amount)}</div>
+            <div className="text-xs text-slate-500 font-medium">{formatDateTime(tx.timestamp)}</div>
           </div>
 
           {/* Status badges */}
@@ -68,30 +68,30 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
             <ResponseBadge status={tx.responseStatus} />
             <FlagBadge level={tx.flagLevel} />
             {tx.verified ? (
-              <span className="inline-flex items-center gap-1 text-micro text-sage-300 uppercase tracking-wider px-2 py-1 rounded border border-sage-700/20 bg-sage-500/5">
-                <ShieldCheck size={11} /> Verified
+              <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-emerald/20 bg-emerald-light">
+                <ShieldCheck size={12} /> Verified
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 text-micro text-alert-amber uppercase tracking-wider px-2 py-1 rounded border border-alert-amber/20 bg-alert-amber/5">
-                <ShieldAlert size={11} /> Unverified
+              <span className="inline-flex items-center gap-1 text-xs text-amber-dark font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-amber/30 bg-amber-soft">
+                <ShieldAlert size={12} /> Unverified
               </span>
             )}
           </div>
 
           {/* Sender info */}
-          <div className="rounded-lg border border-ivory-500/6 bg-charcoal-900/40 p-4 space-y-3">
-            <div className="text-micro text-ivory-500/30 uppercase tracking-wider font-medium">Sender</div>
+          <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
+            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Sender</div>
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2">
                   {tx.senderName.includes('Ltd') || tx.senderName.includes('Enterprise') || tx.senderName.includes('Infra') || tx.senderName.includes('Logistics') || tx.senderName.includes('Transport') || tx.senderName.includes('Construction') || tx.senderName.includes('Biz') || tx.senderName.includes('Trade') ? (
-                    <Building2 size={14} className="text-ivory-500/40" />
+                    <Building2 size={15} className="text-slate-400" />
                   ) : (
-                    <User size={14} className="text-ivory-500/40" />
+                    <User size={15} className="text-slate-400" />
                   )}
-                  <span className="text-sm font-medium text-ivory-500">{tx.senderName}</span>
+                  <span className="text-sm font-semibold text-navy">{tx.senderName}</span>
                 </div>
-                <div className="text-sm text-ivory-500/50 font-mono mt-1">{tx.senderVpa}</div>
+                <div className="text-xs text-slate-500 font-mono mt-1">{tx.senderVpa}</div>
               </div>
               <RiskIndicator risk={tx.senderRisk} />
             </div>
@@ -99,7 +99,7 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
           {/* Context */}
           <div className="space-y-2.5">
-            <div className="text-micro text-ivory-500/30 uppercase tracking-wider font-medium">Transaction Context</div>
+            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Transaction Context</div>
             <div className="grid grid-cols-2 gap-3">
               <ContextItem label="Relationship" value={tx.context.relation} />
               <ContextItem label="Occasion" value={tx.context.occasion} />
@@ -110,49 +110,49 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
           {/* Flag reason */}
           {tx.flagReason && (
-            <div className="rounded-lg border border-alert-red/15 bg-alert-red/5 px-4 py-3">
-              <div className="text-micro text-alert-red uppercase tracking-wider font-medium mb-1">Flag Reason</div>
-              <div className="text-sm text-ivory-500/60">{tx.flagReason}</div>
+            <div className="rounded-xl border border-red-200 bg-red-50 p-4">
+              <div className="text-[10px] text-red-700 uppercase tracking-wider font-bold mb-1">Flag Reason</div>
+              <div className="text-xs text-red-800 leading-relaxed font-medium">{tx.flagReason}</div>
             </div>
           )}
 
           {/* Response */}
           <div className="space-y-2">
-            <div className="text-micro text-ivory-500/30 uppercase tracking-wider font-medium">Recipient Response</div>
+            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Recipient Response</div>
             {tx.responseNote ? (
-              <div className="rounded-lg border border-ivory-500/6 bg-charcoal-900/40 p-4">
+              <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <MessageSquareText size={14} className="text-sage-500" />
-                  <span className="text-sm text-ivory-500/70">{tx.recipientName}</span>
+                  <MessageSquareText size={15} className="text-ieee" />
+                  <span className="text-xs font-semibold text-navy">{tx.recipientName}</span>
                 </div>
-                <p className="text-sm text-ivory-500/60 italic leading-relaxed">&ldquo;{tx.responseNote}&rdquo;</p>
+                <p className="text-xs text-slate-700 italic leading-relaxed">&ldquo;{tx.responseNote}&rdquo;</p>
                 {tx.respondedAt && (
-                  <div className="text-micro text-ivory-500/30 mt-2">{formatDateTime(tx.respondedAt)}</div>
+                  <div className="text-[10px] text-slate-400 mt-2 font-medium">{formatDateTime(tx.respondedAt)}</div>
                 )}
               </div>
             ) : (
-              <div className="rounded-lg border border-alert-amber/15 bg-alert-amber/5 px-4 py-3">
-                <span className="text-sm text-alert-amber/80">No response recorded yet.</span>
+              <div className="rounded-xl border border-amber/30 bg-amber-soft/80 px-4 py-3">
+                <span className="text-xs text-amber-900 font-medium">No response recorded yet.</span>
               </div>
             )}
           </div>
 
           {/* Audit trail */}
           <div className="space-y-2">
-            <div className="text-micro text-ivory-500/30 uppercase tracking-wider font-medium">
+            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
               Audit Trail ({tx.auditTrail.length} events)
             </div>
-            <div className="rounded-lg border border-ivory-500/6 bg-charcoal-900/40 p-4 space-y-3">
+            <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
               {tx.auditTrail.map((ev, i) => (
                 <div key={ev.id} className="flex gap-3">
                   <div className="flex flex-col items-center flex-shrink-0">
-                    <div className={`h-2 w-2 rounded-full ${i === tx.auditTrail.length - 1 ? 'bg-sage-500' : 'bg-ivory-500/20'}`} />
-                    {i < tx.auditTrail.length - 1 && <div className="w-px flex-1 bg-ivory-500/8 my-1" />}
+                    <div className={`h-2 w-2 rounded-full ${i === tx.auditTrail.length - 1 ? 'bg-ieee' : 'bg-slate-300'}`} />
+                    {i < tx.auditTrail.length - 1 && <div className="w-px flex-1 bg-slate-200 my-1" />}
                   </div>
                   <div className="flex-1 pb-2">
-                    <div className="text-sm text-ivory-500/80">{ev.action}</div>
-                    <div className="text-[0.75rem] text-ivory-500/40 mt-0.5">{ev.detail}</div>
-                    <div className="text-micro text-ivory-500/25 mt-1 font-mono">{formatDateTime(ev.timestamp)}</div>
+                    <div className="text-xs font-semibold text-navy">{ev.action}</div>
+                    <div className="text-xs text-slate-600 mt-0.5">{ev.detail}</div>
+                    <div className="text-[10px] text-slate-400 mt-1 font-mono">{formatDateTime(ev.timestamp)}</div>
                   </div>
                 </div>
               ))}
@@ -160,12 +160,12 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
           </div>
 
           {/* Hash */}
-          <div className="rounded-lg border border-ivory-500/6 bg-charcoal-900/40 p-4">
+          <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Hash size={14} className="text-ivory-500/40" />
-              <span className="text-micro text-ivory-500/30 uppercase tracking-wider font-medium">Integrity Hash</span>
+              <Hash size={14} className="text-slate-400" />
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Integrity Hash</span>
             </div>
-            <code className="font-mono text-sm text-ivory-500/50 block break-all">{tx.hash}</code>
+            <code className="font-mono text-xs text-slate-700 block break-all bg-white p-2.5 rounded-lg border border-slate-200 shadow-sm">{tx.hash}</code>
           </div>
         </div>
       </div>
@@ -175,9 +175,9 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
 function ContextItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md border border-ivory-500/4 bg-charcoal-900/30 px-3 py-2">
-      <div className="text-micro text-ivory-500/30 uppercase tracking-wider mb-0.5">{label}</div>
-      <div className="text-sm text-ivory-500/60 leading-snug">{value}</div>
+    <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
+      <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-0.5">{label}</div>
+      <div className="text-xs text-slate-800 font-medium leading-snug">{value}</div>
     </div>
   );
 }

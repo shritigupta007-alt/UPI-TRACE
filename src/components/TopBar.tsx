@@ -8,48 +8,43 @@ interface TopBarProps {
 
 export default function TopBar({ pageTitle, pageBreadcrumb, onMenuClick }: TopBarProps) {
   return (
-    <header className="sticky top-0 z-30 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="flex items-center justify-between px-4 lg:px-6 py-3.5">
+    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200">
+      <div className="flex items-center justify-between px-4 lg:px-6 py-3">
         <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={onMenuClick}
-            className="lg:hidden flex items-center justify-center h-9 w-9 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-navy/30 transition-colors"
+            className="lg:hidden flex items-center justify-center h-9 w-9 rounded-lg border border-slate-200 text-slate-600 hover:text-navy hover:border-navy/30 transition-colors"
           >
             <Menu size={18} />
           </button>
-          <div className="min-w-0">
-            <div className="flex items-center gap-1.5 text-micro text-muted-foreground uppercase tracking-wider font-mono">
-              <span>{pageBreadcrumb}</span>
-              <ChevronRight size={10} className="text-muted-foreground/50" />
-              <span className="text-foreground/60">{pageTitle}</span>
-            </div>
-            <h1 className="font-serif-heading text-heading text-foreground mt-0.5 truncate">
-              {pageTitle}
-            </h1>
+          <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+            <span className="uppercase tracking-wider font-semibold text-slate-400">{pageBreadcrumb}</span>
+            <ChevronRight size={13} className="text-slate-300" />
+            <span className="text-navy font-semibold">{pageTitle}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 lg:gap-3">
-          <div className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-muted/50 w-56 lg:w-64">
-            <Search size={15} className="text-muted-foreground" />
+        <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-800 w-56 lg:w-64 focus-within:border-ieee focus-within:ring-1 focus-within:ring-ieee/30 transition-all">
+            <Search size={14} className="text-slate-400" />
             <input
               type="text"
               placeholder="Search transactions, VPAs..."
-              className="bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none flex-1"
+              className="bg-transparent text-xs text-slate-800 placeholder:text-slate-400 outline-none flex-1"
             />
-            <kbd className="text-[0.625rem] font-mono text-muted-foreground border border-border rounded px-1 py-0.5">⌘K</kbd>
+            <kbd className="text-[10px] font-mono text-slate-400 border border-slate-200 rounded px-1 bg-white">⌘K</kbd>
           </div>
-          <button className="relative flex items-center justify-center h-9 w-9 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-navy/30 transition-colors">
-            <Bell size={16} strokeWidth={1.5} />
-            <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-alert-red" />
+          <button className="relative flex items-center justify-center h-8 w-8 rounded-lg border border-slate-200 text-slate-500 hover:text-navy hover:border-navy/30 transition-colors">
+            <Bell size={15} strokeWidth={2} />
+            <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-red-500" />
           </button>
-          <div className="flex items-center gap-2.5 pl-2 lg:pl-3 border-l border-border">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-navy to-ieee flex items-center justify-center text-micro font-semibold text-white border border-navy/20">
+          <div className="flex items-center gap-2.5 pl-3 border-l border-slate-200">
+            <div className="h-8 w-8 rounded-full bg-navy flex items-center justify-center text-xs font-bold text-white shadow-sm ring-2 ring-amber/30">
               MS
             </div>
             <div className="hidden lg:block leading-tight">
-              <div className="text-sm text-foreground font-medium">Adv. Meera Sharma</div>
-              <div className="text-[0.6875rem] text-muted-foreground">Registered Recipient</div>
+              <div className="text-xs font-semibold text-navy">Adv. Meera Sharma</div>
+              <div className="text-[10px] text-slate-500">Registered Recipient</div>
             </div>
           </div>
         </div>

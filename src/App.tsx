@@ -42,7 +42,7 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-secondary">
+    <div className="flex h-screen overflow-hidden bg-slate-50 text-navy antialiased">
       <Sidebar
         current={currentPage}
         onNavigate={handleNavigate}
@@ -55,13 +55,13 @@ function App() {
           pageBreadcrumb={info.breadcrumb}
           onMenuClick={() => setSidebarOpen(true)}
         />
-        <main className="flex-1 overflow-y-auto scrollbar-thin bg-secondary">
-          <div className="px-4 lg:px-6 py-6 max-w-[1600px] mx-auto">
+        <main className="flex-1 overflow-y-auto scrollbar-thin bg-slate-50">
+          <div className="px-4 lg:px-8 py-6 max-w-[1600px] mx-auto">
             <PageHeader
               title={info.title}
               subtitle={info.subtitle}
               actions={
-                <button className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-border px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground hover:border-navy/30 hover:bg-muted transition-colors">
+                <button className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:text-navy transition-colors">
                   <Download size={14} />
                   Export
                 </button>

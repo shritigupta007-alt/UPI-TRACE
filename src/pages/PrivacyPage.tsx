@@ -23,81 +23,81 @@ export default function PrivacyPage() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <div className="rounded-xl border border-ivory-500/6 bg-graphite-800/30 p-5">
-          <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-sage-700/20 bg-sage-500/8 text-sage-500 mb-4">
-            <Lock size={18} strokeWidth={1.5} />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-ieee/20 bg-ieee-light text-ieee mb-4">
+            <Lock size={18} strokeWidth={2} />
           </div>
-          <h3 className="font-serif-heading text-lg text-ivory-500 mb-1">Data Encryption</h3>
-          <p className="text-sm text-ivory-500/45 leading-relaxed">
+          <h2 className="font-serif-heading text-lg font-semibold text-navy mb-1">Data Encryption</h2>
+          <p className="text-sm text-slate-500 leading-relaxed font-normal">
             All stored declarations and transaction context are encrypted at rest. Only the registered
             recipient can decrypt and view their own records.
           </p>
         </div>
-        <div className="rounded-xl border border-ivory-500/6 bg-graphite-800/30 p-5">
-          <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-gold-700/20 bg-gold-500/8 text-gold-500 mb-4">
-            <Shield size={18} strokeWidth={1.5} />
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-amber/30 bg-amber-soft text-amber-dark mb-4">
+            <Shield size={18} strokeWidth={2} />
           </div>
-          <h3 className="font-serif-heading text-lg text-ivory-500 mb-1">Access Control</h3>
-          <p className="text-sm text-ivory-500/45 leading-relaxed">
+          <h2 className="font-serif-heading text-lg font-semibold text-navy mb-1">Access Control</h2>
+          <p className="text-sm text-slate-500 leading-relaxed font-normal">
             Access is restricted to the recipient. Evidentiary disclosure requires explicit consent or
             a valid judicial order — logged and timestamped.
           </p>
         </div>
-        <div className="rounded-xl border border-ivory-500/6 bg-graphite-800/30 p-5">
-          <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-ivory-500/10 bg-graphite-700/40 text-ivory-500/50 mb-4">
-            <Clock3 size={18} strokeWidth={1.5} />
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-slate-200 bg-slate-100 text-slate-600 mb-4">
+            <Clock3 size={18} strokeWidth={2} />
           </div>
-          <h3 className="font-serif-heading text-lg text-ivory-500 mb-1">Retention Policy</h3>
-          <p className="text-sm text-ivory-500/45 leading-relaxed">
+          <h2 className="font-serif-heading text-lg font-semibold text-navy mb-1">Retention Policy</h2>
+          <p className="text-sm text-slate-500 leading-relaxed font-normal">
             Audit records are retained for 7 years to align with evidentiary requirements. Hashes are
             retained permanently for long-term integrity verification.
           </p>
         </div>
       </div>
 
-      <div className="rounded-xl border border-ivory-500/6 bg-graphite-800/30 overflow-hidden">
-        <div className="px-5 py-4 border-b border-ivory-500/5">
-          <h3 className="font-serif-heading text-lg text-ivory-500">Data Inventory</h3>
-          <p className="text-micro text-ivory-500/35 uppercase tracking-wider mt-0.5">
+      <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60">
+          <h2 className="font-serif-heading text-lg font-semibold text-navy">Data Inventory</h2>
+          <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">
             What UPI-TRACE stores, how it is protected, and why
           </p>
         </div>
         <div className="overflow-x-auto scrollbar-thin">
-          <table className="w-full text-left">
+          <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-ivory-500/8 text-micro text-ivory-500/35 uppercase tracking-wider font-medium">
-                <th className="px-5 py-3">Data Point</th>
-                <th className="px-5 py-3">Stored</th>
-                <th className="px-5 py-3 hidden md:table-cell">Encrypted</th>
-                <th className="px-5 py-3 hidden lg:table-cell">Retention</th>
-                <th className="px-5 py-3 hidden xl:table-cell">Purpose</th>
+              <tr className="border-b border-slate-200 bg-slate-50/75 text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+                <th className="px-6 py-3">Data Point</th>
+                <th className="px-6 py-3">Stored</th>
+                <th className="px-6 py-3 hidden md:table-cell">Encrypted</th>
+                <th className="px-6 py-3 hidden lg:table-cell">Retention</th>
+                <th className="px-6 py-3 hidden xl:table-cell">Purpose</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-ivory-500/4">
+            <tbody className="divide-y divide-slate-100">
               {dataPoints.map((dp) => (
-                <tr key={dp.label} className="hover:bg-charcoal-800/20 transition-colors">
-                  <td className="px-5 py-3.5 text-sm text-ivory-500/80">{dp.label}</td>
-                  <td className="px-5 py-3.5">
+                <tr key={dp.label} className="hover:bg-slate-50/70 transition-colors">
+                  <td className="px-6 py-3.5 text-sm font-semibold text-slate-800">{dp.label}</td>
+                  <td className="px-6 py-3.5">
                     {dp.stored ? (
-                      <span className="inline-flex items-center gap-1 text-micro text-sage-300 uppercase tracking-wider">
-                        <Eye size={11} /> Yes
+                      <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold uppercase tracking-wider">
+                        <Eye size={12} /> Yes
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-micro text-ivory-500/30 uppercase tracking-wider">
-                        <Lock size={11} /> Never
+                      <span className="inline-flex items-center gap-1 text-xs text-slate-400 uppercase tracking-wider">
+                        <Lock size={12} /> Never
                       </span>
                     )}
                   </td>
-                  <td className="px-5 py-3.5 hidden md:table-cell">
+                  <td className="px-6 py-3.5 hidden md:table-cell">
                     {dp.encrypted ? (
-                      <span className="text-micro text-sage-300 uppercase tracking-wider">AES-256</span>
+                      <span className="text-xs font-mono font-semibold text-ieee bg-ieee-light px-2 py-0.5 rounded border border-ieee/20">AES-256</span>
                     ) : (
-                      <span className="text-micro text-ivory-500/30 uppercase tracking-wider">N/A</span>
+                      <span className="text-xs text-slate-400">N/A</span>
                     )}
                   </td>
-                  <td className="px-5 py-3.5 hidden lg:table-cell text-sm text-ivory-500/50">{dp.retention}</td>
-                  <td className="px-5 py-3.5 hidden xl:table-cell text-sm text-ivory-500/45">{dp.purpose}</td>
+                  <td className="px-6 py-3.5 hidden lg:table-cell text-xs font-medium text-slate-600">{dp.retention}</td>
+                  <td className="px-6 py-3.5 hidden xl:table-cell text-xs text-slate-500">{dp.purpose}</td>
                 </tr>
               ))}
             </tbody>
@@ -105,30 +105,30 @@ export default function PrivacyPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-ivory-500/6 bg-graphite-800/30 overflow-hidden">
-        <div className="px-5 py-4 border-b border-ivory-500/5 flex items-center justify-between">
+      <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60 flex items-center justify-between">
           <div>
-            <h3 className="font-serif-heading text-lg text-ivory-500">Access Log</h3>
-            <p className="text-micro text-ivory-500/35 uppercase tracking-wider mt-0.5">Who accessed what, and when</p>
+            <h2 className="font-serif-heading text-lg font-semibold text-navy">Access Log</h2>
+            <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">Who accessed what, and when</p>
           </div>
-          <button className="inline-flex items-center gap-1.5 text-sm text-sage-300 hover:text-sage-100 transition-colors font-medium">
-            <Download size={14} />
+          <button className="inline-flex items-center gap-1.5 text-xs text-ieee hover:text-ieee-dark transition-colors font-semibold">
+            <Download size={13} />
             Export log
           </button>
         </div>
-        <div className="divide-y divide-ivory-500/4">
+        <div className="divide-y divide-slate-100">
           {accessLog.map((entry) => (
-            <div key={entry.id} className="px-5 py-3.5 flex items-center justify-between gap-3 hover:bg-charcoal-800/20 transition-colors">
+            <div key={entry.id} className="px-6 py-3.5 flex items-center justify-between gap-3 hover:bg-slate-50/70 transition-colors">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-md border border-ivory-500/8 bg-charcoal-800/60 text-ivory-500/40 flex-shrink-0">
-                  <FileText size={13} />
+                <div className="flex items-center justify-center h-8 w-8 rounded-lg border border-slate-200 bg-slate-100 text-slate-500 flex-shrink-0">
+                  <FileText size={14} />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-sm text-ivory-500/70 truncate">{entry.action}</div>
-                  <div className="text-micro text-ivory-500/30 font-mono mt-0.5">{entry.id} &middot; {entry.ip}</div>
+                  <div className="text-sm font-semibold text-slate-800 truncate">{entry.action}</div>
+                  <div className="text-xs text-slate-400 font-mono mt-0.5">{entry.id} &middot; {entry.ip}</div>
                 </div>
               </div>
-              <div className="text-micro text-ivory-500/35 whitespace-nowrap">{entry.actor}</div>
+              <div className="text-xs font-medium text-slate-600 whitespace-nowrap">{entry.actor}</div>
             </div>
           ))}
         </div>

@@ -1,9 +1,7 @@
 import { useState, useMemo } from 'react';
 import type { Transaction } from '@/types';
 import { transactions as allTransactions } from '@/data/demoData';
-import { formatCurrency, formatDateTime } from '@/lib/utils';
 import RecentTransactionsTable from '@/components/RecentTransactionsTable';
-import { ResponseBadge, FlagBadge, RiskIndicator } from '@/components/Badges';
 import { Search, Filter, ArrowDownLeft } from 'lucide-react';
 
 interface TransactionsPageProps {
@@ -43,26 +41,26 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
   return (
     <div className="space-y-5">
       <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-2.5 rounded-lg border border-ivory-500/8 bg-graphite-800/40 flex-1 max-w-md">
-          <Search size={16} className="text-ivory-500/30" />
+        <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-slate-200 bg-white shadow-sm flex-1 max-w-md focus-within:border-ieee focus-within:ring-1 focus-within:ring-ieee/30 transition-all">
+          <Search size={16} className="text-slate-400" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by sender name, VPA, or transaction ID..."
-            className="bg-transparent text-sm text-ivory-500 placeholder:text-ivory-500/30 outline-none flex-1"
+            className="bg-transparent text-sm text-slate-800 placeholder:text-slate-400 outline-none flex-1"
           />
         </div>
         <div className="flex items-center gap-1.5 flex-wrap">
-          <Filter size={14} className="text-ivory-500/30 mr-1" />
+          <Filter size={14} className="text-slate-400 mr-1" />
           {filterOptions.map((opt) => (
             <button
               key={opt.key}
               onClick={() => setFilter(opt.key)}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm ${
                 filter === opt.key
-                  ? 'bg-sage-500/15 text-sage-300 border border-sage-700/25'
-                  : 'text-ivory-500/45 hover:text-ivory-500/70 border border-transparent hover:border-ivory-500/8'
+                  ? 'bg-navy text-white border border-navy shadow-navy/10'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:text-navy'
               }`}
             >
               {opt.label}
@@ -71,16 +69,16 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
         </div>
       </div>
 
-      <div className="rounded-xl border border-ivory-500/6 bg-graphite-800/30 overflow-hidden">
-        <div className="px-5 py-4 border-b border-ivory-500/5 flex items-center justify-between">
+      <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60 flex items-center justify-between">
           <div>
-            <h3 className="font-serif-heading text-lg text-ivory-500">Transaction Log</h3>
-            <p className="text-micro text-ivory-500/35 uppercase tracking-wider mt-0.5">
+            <h2 className="font-serif-heading text-lg font-semibold text-navy">Transaction Log</h2>
+            <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">
               {filtered.length} of {allTransactions.length} transactions
             </p>
           </div>
-          <div className="flex items-center gap-2 text-micro text-ivory-500/30 uppercase tracking-wider">
-            <ArrowDownLeft size={12} className="text-sage-500" />
+          <div className="flex items-center gap-2 text-xs text-slate-500 font-semibold uppercase tracking-wider">
+            <ArrowDownLeft size={13} className="text-ieee" />
             Incoming only
           </div>
         </div>
@@ -88,7 +86,7 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
           <RecentTransactionsTable transactions={filtered} onSelect={onSelectTransaction} />
         ) : (
           <div className="px-5 py-16 text-center">
-            <p className="text-sm text-ivory-500/40">No transactions match your search.</p>
+            <p className="text-sm text-slate-500">No transactions match your search.</p>
           </div>
         )}
       </div>

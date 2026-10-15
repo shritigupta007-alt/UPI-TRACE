@@ -4,139 +4,118 @@ export default {
   theme: {
     extend: {
       colors: {
-        // ── NCEA-SSEM Navy palette ──────────────────────────────
+        // ── NCEA-SSEM Brand Tokens ──────────────────────────────
         navy: {
-          deep: '#0F1B3D',   // darkest navy (hero bg, top bar)
-          DEFAULT: '#1B2A4A', // standard navy (cards, nav)
-          mid:  '#243557',   // slightly lighter navy
-          light: '#2E4270',  // lighter shade
+          deep: '#0F1B3D',    // primary dark navy
+          DEFAULT: '#1B2A4A', // medium navy
+          mid: '#243557',     // mid navy
+          light: '#2E4270',   // light navy
+          muted: '#EAEFF8',   // light navy wash
         },
-        // ── Amber / Gold accent ──────────────────────────────────
         amber: {
-          DEFAULT: '#E8A838', // primary gold accent
-          soft:   '#FBF0D9', // very light amber tint (section bg)
-          dark:   '#C48A20', // darker amber (hover states)
-          muted:  '#F5D9A0', // muted amber
+          DEFAULT: '#E8A838', // signature gold accent
+          dark: '#C48A20',    // deep amber
+          soft: '#FBF0D9',    // light warm amber wash
+          muted: '#F5D9A0',   // border amber
         },
-        // ── IEEE Blue accent ──────────────────────────────────────
         ieee: {
-          DEFAULT: '#00629B', // IEEE blue
-          dark:   '#004F7C',
-          light:  '#E8F4FD',
+          DEFAULT: '#00629B', // signature IEEE blue
+          dark: '#004F7C',
+          light: '#E8F4FD',
+          mid: '#33A3DF',
         },
-        // ── Emerald accent ───────────────────────────────────────
         emerald: {
-          DEFAULT: '#2E7D52',
-          light:  '#E6F4EC',
+          DEFAULT: '#2E7D52', // emerald green
+          dark: '#215A3A',
+          light: '#E6F4EC',
         },
-        // ── Semantic tokens ──────────────────────────────────────
-        background: '#FFFFFF',
+        // Semantic tokens (Light Mode with Navy Accents)
+        background: '#F8FAFC',
         foreground: '#0F1B3D',
-        card:       '#FFFFFF',
-        border:     '#E2E8F0',
-        muted:      '#F1F5F9',
+        card: '#FFFFFF',
+        'card-foreground': '#0F1B3D',
+        border: '#E2E8F0',
+        muted: '#F1F5F9',
         'muted-foreground': '#64748B',
-        secondary:  '#F6FAFD',
-        input:      '#E2E8F0',
-        ring:       '#E8A838',
-        // Legacy palette aliases for backward compat
+        secondary: '#F1F5F9',
+        input: '#E2E8F0',
+        ring: '#E8A838',
+
+        // ── Backward-compatible Aliases ──────────────────────────
+        // Mapping legacy dark-theme names to the NCEA-SSEM light/navy system
         charcoal: {
-          base: '#0F1B3D',
-          900: '#0C1530',
-          800: '#0F1B3D',
-          700: '#1B2A4A',
-          600: '#243557',
-          500: '#2E4270',
-          400: '#3A5285',
+          base: '#FFFFFF',
+          900: '#0F1B3D', // dark navy for backdrops/headers
+          800: '#FFFFFF', // card backgrounds
+          700: '#F8FAFC', // secondary card surfaces
+          600: '#F1F5F9',
+          500: '#E2E8F0',
+          400: '#CBD5E1',
         },
         graphite: {
-          900: '#1A2540',
-          800: '#223050',
-          700: '#2A3C60',
-          600: '#334870',
-          500: '#3E5580',
-          400: '#4A6290',
-        },
-        sage: {
-          900: '#00629B',
-          700: '#0075BB',
-          500: '#0088D4',
-          300: '#33A3DF',
-          100: '#99CDF0',
+          900: '#0F1B3D',
+          800: '#FFFFFF', // card backgrounds
+          700: '#F8FAFC', // alternate surfaces
+          600: '#F1F5F9',
+          500: '#E2E8F0',
+          400: '#CBD5E1',
         },
         ivory: {
-          900: '#CBD5E1',
-          700: '#E2E8F0',
-          500: '#F1F5F9',
-          300: '#F8FAFC',
+          base: '#0F1B3D',
+          900: '#0A1128', // darkest text
+          800: '#0F1B3D',
+          700: '#1B2A4A',
+          500: '#0F1B3D', // primary text is now crisp navy!
+          300: '#334155', // secondary text
+          100: '#64748B', // muted text
+          50: '#F8FAFC',
+        },
+        sage: {
+          900: '#003B5C',
+          700: '#004F7C',
+          500: '#00629B', // IEEE Blue
+          300: '#00629B',
+          100: '#E8F4FD',
         },
         gold: {
-          900: '#C48A20',
-          700: '#D49A28',
-          500: '#E8A838',
-          300: '#F0C068',
-          100: '#F8DDA0',
+          900: '#784E00',
+          700: '#B27810',
+          500: '#E8A838', // Amber Gold
+          300: '#C48A20',
+          100: '#FBF0D9',
         },
         alert: {
-          red:    '#DC2626',
+          red: '#DC2626',
           orange: '#EA580C',
-          amber:  '#E8A838',
+          amber: '#D97706',
         },
         status: {
-          recorded:    '#2E7D52',
-          pending:     '#E8A838',
-          flagged:     '#DC2626',
-          declined:    '#C48A20',
-          acknowledged:'#00629B',
+          recorded: '#2E7D52',
+          pending: '#D97706',
+          flagged: '#DC2626',
+          declined: '#C48A20',
+          acknowledged: '#00629B',
         },
       },
       fontFamily: {
-        serif:   ['"Space Grotesk"', '"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans:    ['"Inter"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
+        serif: ['"Space Grotesk"', '"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
         display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono:    ['"JetBrains Mono"', '"Menlo"', 'monospace'],
+        mono: ['"JetBrains Mono"', '"Menlo"', 'monospace'],
       },
       fontSize: {
-        'display':    ['2.75rem', { lineHeight: '1.1',  letterSpacing: '-0.02em' }],
-        'heading':    ['1.75rem', { lineHeight: '1.2',  letterSpacing: '-0.01em' }],
-        'subheading': ['1.125rem',{ lineHeight: '1.3',  letterSpacing: '0.01em'  }],
-        'body':       ['0.875rem',{ lineHeight: '1.5'  }],
-        'small':      ['0.8125rem',{lineHeight: '1.45' }],
-        'micro':      ['0.6875rem',{lineHeight: '1.4',  letterSpacing: '0.06em'  }],
+        'display': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+        'heading': ['1.75rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        'subheading': ['1.125rem', { lineHeight: '1.35', letterSpacing: '0.01em' }],
+        'body': ['0.875rem', { lineHeight: '1.5' }],
+        'small': ['0.8125rem', { lineHeight: '1.45' }],
+        'micro': ['0.6875rem', { lineHeight: '1.4', letterSpacing: '0.06em' }],
       },
       boxShadow: {
-        'elevated':   '0 8px 32px -8px rgba(15,27,61,0.25), 0 2px 8px -4px rgba(15,27,61,0.15)',
-        'card':       '0 4px 24px -12px rgba(15,27,61,0.15)',
-        'subtle':     '0 1px 3px 0 rgba(15,27,61,0.1)',
-        'inset-line': 'inset 0 1px 0 0 rgba(15,27,61,0.06)',
-        'amber':      '0 8px 24px -8px rgba(232,168,56,0.3)',
-      },
-      animation: {
-        'fade-in':    'fadeIn 0.3s ease-out',
-        'slide-up':   'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
-        'scan':       'scan 1.8s ease-in-out infinite',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%':   { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%':   { opacity: '0', transform: 'translateY(8px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        pulseSoft: {
-          '0%, 100%': { opacity: '1' },
-          '50%':      { opacity: '0.5' },
-        },
-        scan: {
-          '0%, 100%': { transform: 'translateY(0)',   opacity: '0.4' },
-          '50%':      { transform: 'translateY(8px)', opacity: '1'   },
-        },
-      },
-      transitionTimingFunction: {
-        'smooth': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'elevated': '0 10px 30px -5px rgba(15, 27, 61, 0.1), 0 4px 12px -2px rgba(15, 27, 61, 0.05)',
+        'card': '0 2px 8px -1px rgba(15, 27, 61, 0.06), 0 1px 3px 0 rgba(15, 27, 61, 0.04)',
+        'subtle': '0 1px 2px 0 rgba(15, 27, 61, 0.05)',
+        'amber': '0 8px 24px -8px rgba(232, 168, 56, 0.35)',
       },
     },
   },
