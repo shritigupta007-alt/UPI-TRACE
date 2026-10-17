@@ -30,7 +30,7 @@ export default function ResponsePage({ onSelectTransaction }: ResponsePageProps)
       {pending.length > 0 && (
         <div>
           <h2 className="font-serif-heading text-lg font-semibold text-navy mb-3">
-            Awaiting Response <span className="text-amber-dark text-sm font-sans font-medium">({pending.length})</span>
+            Waiting for your reply <span className="text-amber-dark text-sm font-sans font-medium">({pending.length})</span>
           </h2>
           <div className="space-y-3">
             {pending.map((tx) => (

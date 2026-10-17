@@ -31,11 +31,11 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
 
   const filterOptions: { key: FilterStatus; label: string }[] = [
     { key: 'all', label: 'All' },
-    { key: 'pending', label: 'Pending' },
-    { key: 'recorded', label: 'Recorded' },
-    { key: 'declined', label: 'Declined' },
-    { key: 'acknowledged', label: 'Acknowledged' },
-    { key: 'flagged', label: 'Flagged' },
+    { key: 'pending', label: 'Waiting for reply' },
+    { key: 'recorded', label: 'Replied' },
+    { key: 'declined', label: 'Returned' },
+    { key: 'acknowledged', label: 'Accepted' },
+    { key: 'flagged', label: 'Needs attention' },
   ];
 
   return (
@@ -47,7 +47,7 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by sender name, VPA, or transaction ID..."
+            placeholder="Search by name, UPI ID or payment ID"
             className="bg-transparent text-sm text-slate-800 placeholder:text-slate-400 outline-none flex-1"
           />
         </div>
@@ -59,7 +59,7 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
               onClick={() => setFilter(opt.key)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm ${
                 filter === opt.key
-                  ? 'bg-navy text-white border border-navy shadow-navy/10'
+                  ? 'bg-brand text-white border border-brand'
                   : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:text-navy'
               }`}
             >
@@ -72,12 +72,12 @@ export default function TransactionsPage({ onSelectTransaction }: TransactionsPa
       <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60 flex items-center justify-between">
           <div>
-            <h2 className="font-serif-heading text-lg font-semibold text-navy">Transaction Log</h2>
-            <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">
+            <h2 className="font-serif-heading text-lg font-semibold text-navy">All payments</h2>
+            <p className="text-xs text-slate-500 font-medium mt-0.5">
               {filtered.length} of {allTransactions.length} transactions
             </p>
           </div>
-          <div className="flex items-center gap-2 text-xs text-slate-500 font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-xs text-slate-500 font-semibold">
             <ArrowDownLeft size={13} className="text-ieee" />
             Incoming only
           </div>

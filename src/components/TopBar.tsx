@@ -1,12 +1,13 @@
-import { Menu, Search, Bell, ChevronRight } from 'lucide-react';
+import { Menu, Search, Bell, ChevronRight, ArrowLeft } from 'lucide-react';
 
 interface TopBarProps {
   pageTitle: string;
   pageBreadcrumb: string;
   onMenuClick: () => void;
+  onBack?: () => void;
 }
 
-export default function TopBar({ pageTitle, pageBreadcrumb, onMenuClick }: TopBarProps) {
+export default function TopBar({ pageTitle, pageBreadcrumb, onMenuClick, onBack }: TopBarProps) {
   return (
     <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="flex items-center justify-between px-4 lg:px-6 py-3">
@@ -17,8 +18,13 @@ export default function TopBar({ pageTitle, pageBreadcrumb, onMenuClick }: TopBa
           >
             <Menu size={18} />
           </button>
-          <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
-            <span className="uppercase tracking-wider font-semibold text-slate-400">{pageBreadcrumb}</span>
+          {onBack && (
+            <button onClick={onBack} className="flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-bold text-white hover:bg-brand-dark transition-colors">
+              <ArrowLeft size={14} /> PhonePe
+            </button>
+          )}
+          <div className="hidden sm:flex items-center gap-2 text-xs font-medium text-slate-500">
+            <span className="uppercase font-semibold text-slate-400">{pageBreadcrumb}</span>
             <ChevronRight size={13} className="text-slate-300" />
             <span className="text-navy font-semibold">{pageTitle}</span>
           </div>
@@ -29,7 +35,7 @@ export default function TopBar({ pageTitle, pageBreadcrumb, onMenuClick }: TopBa
             <Search size={14} className="text-slate-400" />
             <input
               type="text"
-              placeholder="Search transactions, VPAs..."
+              placeholder="Search payments"
               className="bg-transparent text-xs text-slate-800 placeholder:text-slate-400 outline-none flex-1"
             />
             <kbd className="text-[10px] font-mono text-slate-400 border border-slate-200 rounded px-1 bg-white">⌘K</kbd>
@@ -39,12 +45,12 @@ export default function TopBar({ pageTitle, pageBreadcrumb, onMenuClick }: TopBa
             <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-red-500" />
           </button>
           <div className="flex items-center gap-2.5 pl-3 border-l border-slate-200">
-            <div className="h-8 w-8 rounded-full bg-navy flex items-center justify-center text-xs font-bold text-white shadow-sm ring-2 ring-amber/30">
+            <div className="h-8 w-8 rounded-full bg-brand flex items-center justify-center text-xs font-bold text-white shadow-sm ring-2 ring-amber/30">
               MS
             </div>
             <div className="hidden lg:block leading-tight">
               <div className="text-xs font-semibold text-navy">Adv. Meera Sharma</div>
-              <div className="text-[10px] text-slate-500">Registered Recipient</div>
+              <div className="text-[10px] text-slate-500">Payment receiver</div>
             </div>
           </div>
         </div>

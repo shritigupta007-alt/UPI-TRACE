@@ -50,7 +50,7 @@ export default function ReportsPage({ onNavigate: _onNavigate }: ReportsPageProp
             integrity verification metadata.
           </p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-navy text-white px-5 py-2.5 text-sm font-semibold hover:bg-navy-deep shadow-sm transition-all active:scale-95">
+        <button className="inline-flex items-center gap-2 rounded-lg bg-brand text-white px-5 py-2.5 text-sm font-semibold hover:bg-brand-dark shadow-sm transition-all active:scale-95">
           <FileText size={16} />
           Generate New Report
         </button>
@@ -66,7 +66,7 @@ export default function ReportsPage({ onNavigate: _onNavigate }: ReportsPageProp
               <div className="flex items-center justify-center h-10 w-10 rounded-lg border border-ieee/20 bg-ieee-light text-ieee">
                 <FileText size={18} strokeWidth={2} />
               </div>
-              <span className={`inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full border ${
+              <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
                 rpt.status === 'ready'
                   ? 'border-emerald/20 bg-emerald-light text-emerald'
                   : 'border-amber/30 bg-amber-soft text-amber-dark'
@@ -81,15 +81,15 @@ export default function ReportsPage({ onNavigate: _onNavigate }: ReportsPageProp
 
             <div className="grid grid-cols-3 gap-3 mb-4 py-3 border-y border-slate-100">
               <div>
-                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-0.5">TXs</div>
+                <div className="text-[10px] text-slate-400 font-semibold mb-0.5">TXs</div>
                 <div className="text-sm font-bold text-navy tabular-nums">{rpt.txCount}</div>
               </div>
               <div>
-                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-0.5">Value</div>
+                <div className="text-[10px] text-slate-400 font-semibold mb-0.5">Value</div>
                 <div className="text-sm font-bold text-navy tabular-nums">{formatCurrency(rpt.totalValue)}</div>
               </div>
               <div>
-                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-0.5">Responses</div>
+                <div className="text-[10px] text-slate-400 font-semibold mb-0.5">Responses</div>
                 <div className="text-sm font-bold text-navy tabular-nums">{rpt.responses}</div>
               </div>
             </div>

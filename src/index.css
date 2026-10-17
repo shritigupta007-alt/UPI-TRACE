@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,8 +26,8 @@
   --emerald:    #2E7D52;
 
   /* Semantic surface tokens */
-  --background:       #F8FAFC;
-  --foreground:       #0F1B3D;
+  --background:       #F7F5FB;
+  --foreground:       #241540;
   --card:             #FFFFFF;
   --card-foreground:  #0F1B3D;
   --popover:          #FFFFFF;
@@ -62,31 +62,31 @@
 
 @layer base {
   * {
-    border-color: #E2E8F0;
+    border-color: #E8E2F2;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: rgba(232, 168, 56, 0.3);
+    background-color: rgba(95, 37, 159, 0.2);
     color: #0F1B3D;
   }
 }
 
 @layer utilities {
   .font-serif-heading {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
     font-weight: 600;
   }
 
   .font-display {
-    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, system-ui, sans-serif;
   }
 
   .scrollbar-thin {
@@ -118,13 +118,11 @@
 
   /* Rich Navy Hero Gradient matching NCEA-SSEM */
   .bg-navy-hero {
-    background-color: #0F1B3D;
+    background-color: #5F259F;
     background-image:
-      radial-gradient(ellipse 65% 60% at 15% 20%, rgba(0, 98, 155, 0.45), transparent 70%),
-      radial-gradient(ellipse 55% 50% at 85% 30%, rgba(0, 98, 155, 0.35), transparent 70%),
-      radial-gradient(circle at 92% 12%, rgba(232, 168, 56, 0.16), transparent 40%),
-      radial-gradient(circle at 8% 88%, rgba(232, 168, 56, 0.08), transparent 40%),
-      linear-gradient(135deg, #0F1B3D 0%, #1B2A4A 60%, #0F1B3D 100%);
+      radial-gradient(ellipse 60% 70% at 100% 0%, rgba(255, 255, 255, 0.16), transparent 70%),
+      radial-gradient(circle at 0% 100%, rgba(245, 166, 35, 0.18), transparent 45%),
+      linear-gradient(135deg, #6A2DB0 0%, #5F259F 50%, #431A78 100%);
   }
 
   /* Grid pattern overlay */
@@ -142,3 +140,6 @@
     box-shadow: 0 1px 3px 0 rgba(15, 27, 61, 0.05), 0 1px 2px -1px rgba(15, 27, 61, 0.05);
   }
 }
+
+@media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation: none !important; transition: none !important; } }
+:focus-visible { outline: 2px solid #5F259F; outline-offset: 2px; }

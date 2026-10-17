@@ -2,28 +2,28 @@ import type { ResponseStatus, FlagLevel, SenderRisk } from '@/types';
 
 const responseConfig: Record<ResponseStatus, { label: string; dot: string; text: string; bg: string; border: string }> = {
   pending: {
-    label: 'Pending',
+    label: 'Waiting for reply',
     dot: 'bg-amber-500',
     text: 'text-amber-800',
     bg: 'bg-amber-50',
     border: 'border-amber-200',
   },
   recorded: {
-    label: 'Recorded',
+    label: 'Replied',
     dot: 'bg-emerald',
     text: 'text-emerald-800',
     bg: 'bg-emerald-light',
     border: 'border-emerald/20',
   },
   declined: {
-    label: 'Declined',
+    label: 'Returned',
     dot: 'bg-amber-700',
     text: 'text-amber-900',
     bg: 'bg-amber-100',
     border: 'border-amber-300',
   },
   acknowledged: {
-    label: 'Acknowledged',
+    label: 'Accepted',
     dot: 'bg-ieee',
     text: 'text-ieee-dark',
     bg: 'bg-ieee-light',
@@ -33,19 +33,19 @@ const responseConfig: Record<ResponseStatus, { label: string; dot: string; text:
 
 const flagConfig: Record<FlagLevel, { label: string; text: string; bg: string; border: string }> = {
   none: {
-    label: 'Clear',
+    label: 'All clear',
     text: 'text-emerald-800',
     bg: 'bg-emerald-light',
     border: 'border-emerald/20',
   },
   review: {
-    label: 'Under Review',
+    label: 'Check this',
     text: 'text-amber-800',
     bg: 'bg-amber-50',
     border: 'border-amber-200',
   },
   flagged: {
-    label: 'Flagged',
+    label: 'Needs attention',
     text: 'text-red-700',
     bg: 'bg-red-50',
     border: 'border-red-200',
@@ -53,17 +53,17 @@ const flagConfig: Record<FlagLevel, { label: string; text: string; bg: string; b
 };
 
 const riskConfig: Record<SenderRisk, { label: string; text: string }> = {
-  unknown: { label: 'Unknown', text: 'text-slate-500' },
-  low: { label: 'Low Risk', text: 'text-emerald' },
-  elevated: { label: 'Elevated', text: 'text-amber-dark' },
-  high: { label: 'High Risk', text: 'text-red-600' },
+  unknown: { label: 'Unknown sender', text: 'text-slate-500' },
+  low: { label: 'Low risk', text: 'text-emerald' },
+  elevated: { label: 'Medium risk', text: 'text-amber-dark' },
+  high: { label: 'High risk', text: 'text-red-600' },
 };
 
 export function ResponseBadge({ status, size = 'sm' }: { status: ResponseStatus; size?: 'sm' | 'xs' }) {
   const cfg = responseConfig[status];
   const pad = size === 'xs' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs';
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border ${cfg.border} ${cfg.bg} ${cfg.text} ${pad} font-semibold uppercase tracking-wider`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full border ${cfg.border} ${cfg.bg} ${cfg.text} ${pad} font-semibold`}>
       <span className={`h-1.5 w-1.5 rounded-full ${cfg.dot}`} />
       {cfg.label}
     </span>
@@ -74,7 +74,7 @@ export function FlagBadge({ level, size = 'sm' }: { level: FlagLevel; size?: 'sm
   const cfg = flagConfig[level];
   const pad = size === 'xs' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs';
   return (
-    <span className={`inline-flex items-center rounded border ${cfg.border} ${cfg.bg} ${cfg.text} ${pad} font-semibold uppercase tracking-wider`}>
+    <span className={`inline-flex items-center rounded border ${cfg.border} ${cfg.bg} ${cfg.text} ${pad} font-semibold`}>
       {cfg.label}
     </span>
   );
@@ -95,7 +95,7 @@ export function RiskIndicator({ risk }: { risk: SenderRisk }) {
           />
         ))}
       </span>
-      <span className="text-[10px] uppercase tracking-wider font-semibold">{cfg.label}</span>
+      <span className="text-[10px] font-semibold">{cfg.label}</span>
     </span>
   );
 }

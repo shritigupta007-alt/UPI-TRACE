@@ -33,13 +33,13 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
   return (
     <>
-      <div className="fixed inset-0 z-50 bg-navy-deep/60 backdrop-blur-sm animate-fade-in" onClick={onClose} />
-      <div className="fixed right-0 inset-y-0 z-50 w-full max-w-md lg:max-w-lg bg-white border-l border-slate-200 flex flex-col shadow-2xl animate-slide-up">
+      <div className="fixed inset-0 z-50 bg-brand-deep/50 backdrop-blur-sm animate-fade-in" onClick={onClose} />
+      <div className="fixed right-0 inset-y-0 z-50 w-full max-w-md lg:max-w-lg bg-white border-l border-slate-200 flex flex-col shadow-2xl animate-slide-in">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/70 flex-shrink-0">
           <div className="flex items-center gap-2">
             <ArrowDownLeft size={18} className="text-ieee" />
-            <span className="text-sm font-bold text-navy">Transaction Detail</span>
+            <span className="text-sm font-bold text-navy">Payment details</span>
           </div>
           <button
             onClick={onClose}
@@ -68,19 +68,19 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
             <ResponseBadge status={tx.responseStatus} />
             <FlagBadge level={tx.flagLevel} />
             {tx.verified ? (
-              <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-emerald/20 bg-emerald-light">
-                <ShieldCheck size={12} /> Verified
+              <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold px-2.5 py-1 rounded-full border border-emerald/20 bg-emerald-light">
+                <ShieldCheck size={12} /> Checked
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 text-xs text-amber-dark font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-amber/30 bg-amber-soft">
-                <ShieldAlert size={12} /> Unverified
+              <span className="inline-flex items-center gap-1 text-xs text-amber-dark font-semibold px-2.5 py-1 rounded-full border border-amber/30 bg-amber-soft">
+                <ShieldAlert size={12} /> Not checked
               </span>
             )}
           </div>
 
           {/* Sender info */}
           <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Sender</div>
+            <div className="text-[10px] text-slate-400 font-semibold">Sender</div>
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
           {/* Context */}
           <div className="space-y-2.5">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Transaction Context</div>
+            <div className="text-[10px] text-slate-400 font-semibold">About this payment</div>
             <div className="grid grid-cols-2 gap-3">
               <ContextItem label="Relationship" value={tx.context.relation} />
               <ContextItem label="Occasion" value={tx.context.occasion} />
@@ -111,14 +111,14 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
           {/* Flag reason */}
           {tx.flagReason && (
             <div className="rounded-xl border border-red-200 bg-red-50 p-4">
-              <div className="text-[10px] text-red-700 uppercase tracking-wider font-bold mb-1">Flag Reason</div>
+              <div className="text-[10px] text-red-700 font-bold mb-1">Why it was flagged</div>
               <div className="text-xs text-red-800 leading-relaxed font-medium">{tx.flagReason}</div>
             </div>
           )}
 
           {/* Response */}
           <div className="space-y-2">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Recipient Response</div>
+            <div className="text-[10px] text-slate-400 font-semibold">Your replies</div>
             {tx.responseNote ? (
               <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -139,8 +139,8 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 
           {/* Audit trail */}
           <div className="space-y-2">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-              Audit Trail ({tx.auditTrail.length} events)
+            <div className="text-[10px] text-slate-400 font-semibold">
+              What happened ({tx.auditTrail.length} events)
             </div>
             <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
               {tx.auditTrail.map((ev, i) => (
@@ -163,7 +163,7 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
           <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
             <div className="flex items-center gap-2 mb-2">
               <Hash size={14} className="text-slate-400" />
-              <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Integrity Hash</span>
+              <span className="text-[10px] text-slate-400 font-semibold">Record fingerprint</span>
             </div>
             <code className="font-mono text-xs text-slate-700 block break-all bg-white p-2.5 rounded-lg border border-slate-200 shadow-sm">{tx.hash}</code>
           </div>
@@ -176,7 +176,7 @@ export default function TransactionDrawer({ transaction, onClose }: TransactionD
 function ContextItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
-      <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-0.5">{label}</div>
+      <div className="text-[10px] text-slate-400 font-semibold mb-0.5">{label}</div>
       <div className="text-xs text-slate-800 font-medium leading-snug">{value}</div>
     </div>
   );

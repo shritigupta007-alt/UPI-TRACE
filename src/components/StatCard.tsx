@@ -36,7 +36,7 @@ export default function StatCard({ label, value, icon, trend, accent = 'sage', d
   const ac = accentMap[accent];
   return (
     <div
-      className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:border-slate-300"
+      className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:border-slate-300"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="relative">
@@ -61,7 +61,7 @@ export default function StatCard({ label, value, icon, trend, accent = 'sage', d
         <div className="font-serif-heading text-3xl font-bold text-navy leading-none mb-1.5 tabular-nums">
           {value}
         </div>
-        <div className="text-xs font-medium uppercase tracking-wider text-slate-500">{label}</div>
+        <div className="text-sm font-medium text-slate-500">{label}</div>
       </div>
     </div>
   );

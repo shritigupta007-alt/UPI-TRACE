@@ -57,22 +57,22 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               Welcome back
             </h1>
             <p className="mt-1 text-sm text-slate-500 text-center font-normal">
-              Sign in to access your UPI-TRACE workspace
+              Sign in to see who paid you, and why
             </p>
           </div>
 
           {/* Security badge */}
           <div className="flex items-center justify-center gap-2 rounded-lg bg-ieee-light border border-ieee/20 px-3 py-2 mb-6">
             <Shield size={14} className="text-ieee shrink-0" />
-            <span className="text-[11px] text-ieee uppercase tracking-widest font-semibold">
-              Secure · Encrypted · Audit-logged
+            <span className="text-[11px] text-ieee font-semibold">
+              Private and secure
             </span>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             {/* Email field */}
             <div>
-              <label htmlFor="login-email" className="block text-xs text-slate-600 uppercase tracking-wider mb-1.5 font-semibold">
+              <label htmlFor="login-email" className="block text-xs text-slate-600 mb-1.5 font-semibold">
                 Email Address
               </label>
               <div
@@ -99,7 +99,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
             {/* Password field */}
             <div>
-              <label htmlFor="login-password" className="block text-xs text-slate-600 uppercase tracking-wider mb-1.5 font-semibold">
+              <label htmlFor="login-password" className="block text-xs text-slate-600 mb-1.5 font-semibold">
                 Password
               </label>
               <div
@@ -157,7 +157,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               id="login-submit-btn"
               type="submit"
               disabled={isLoading}
-              className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-amber hover:brightness-105 active:scale-95 disabled:opacity-60 text-navy-deep font-bold text-sm py-3 transition-all duration-200 shadow-md shadow-amber/25"
+              className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-brand hover:bg-brand-dark active:scale-95 disabled:opacity-60 text-white font-bold text-sm py-3 transition-all duration-200 shadow-md shadow-brand/25"
             >
               {isLoading ? (
                 <>
@@ -172,7 +172,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
           {/* Demo credentials hint */}
           <div className="mt-6 pt-5 border-t border-slate-100">
-            <p className="text-center text-[11px] text-slate-400 uppercase tracking-wider mb-2 font-semibold">Demo Credentials</p>
+            <p className="text-center text-[11px] text-slate-400 mb-2 font-semibold">Demo Credentials</p>
             <div className="rounded-lg bg-slate-50 border border-slate-200 divide-y divide-slate-200 text-xs">
               <div className="flex items-center justify-between px-3.5 py-2">
                 <span className="text-slate-500 font-medium">Email</span>

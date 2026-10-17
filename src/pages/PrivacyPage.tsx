@@ -3,7 +3,7 @@ import { transactions as allTransactions } from '@/data/demoData';
 
 export default function PrivacyPage() {
   const dataPoints = [
-    { label: 'Sender VPA', stored: true, encrypted: true, retention: '7 years', purpose: 'Transaction identification & risk assessment' },
+    { label: 'Sender UPI ID', stored: true, encrypted: true, retention: '7 years', purpose: 'Transaction identification & risk assessment' },
     { label: 'Sender Name', stored: true, encrypted: true, retention: '7 years', purpose: 'Sender attribution for audit trail' },
     { label: 'Transaction Amount', stored: true, encrypted: true, retention: '7 years', purpose: 'Contextual evidence record' },
     { label: 'Recipient Declaration', stored: true, encrypted: true, retention: '7 years', purpose: 'Recipient consent & context preservation' },
@@ -59,14 +59,14 @@ export default function PrivacyPage() {
       <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60">
           <h2 className="font-serif-heading text-lg font-semibold text-navy">Data Inventory</h2>
-          <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             What UPI-TRACE stores, how it is protected, and why
           </p>
         </div>
         <div className="overflow-x-auto scrollbar-thin">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-200 bg-slate-50/75 text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+              <tr className="border-b border-slate-200 bg-slate-50/75 text-[11px] text-slate-500 font-semibold">
                 <th className="px-6 py-3">Data Point</th>
                 <th className="px-6 py-3">Stored</th>
                 <th className="px-6 py-3 hidden md:table-cell">Encrypted</th>
@@ -80,11 +80,11 @@ export default function PrivacyPage() {
                   <td className="px-6 py-3.5 text-sm font-semibold text-slate-800">{dp.label}</td>
                   <td className="px-6 py-3.5">
                     {dp.stored ? (
-                      <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold uppercase tracking-wider">
+                      <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold">
                         <Eye size={12} /> Yes
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-xs text-slate-400 uppercase tracking-wider">
+                      <span className="inline-flex items-center gap-1 text-xs text-slate-400">
                         <Lock size={12} /> Never
                       </span>
                     )}
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60 flex items-center justify-between">
           <div>
             <h2 className="font-serif-heading text-lg font-semibold text-navy">Access Log</h2>
-            <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">Who accessed what, and when</p>
+            <p className="text-xs text-slate-500 font-medium mt-0.5">Who accessed what, and when</p>
           </div>
           <button className="inline-flex items-center gap-1.5 text-xs text-ieee hover:text-ieee-dark transition-colors font-semibold">
             <Download size={13} />

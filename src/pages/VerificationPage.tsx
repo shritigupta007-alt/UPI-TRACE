@@ -21,21 +21,21 @@ export default function VerificationPage() {
         <div className="rounded-xl border border-emerald/20 bg-emerald-light/60 p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <ShieldCheck size={18} className="text-emerald" />
-            <span className="text-xs text-emerald-800 uppercase tracking-wider font-semibold">Verified</span>
+            <span className="text-xs text-emerald-800 font-semibold">Verified</span>
           </div>
           <div className="font-serif-heading text-3xl font-bold text-navy">{verified}</div>
         </div>
         <div className="rounded-xl border border-amber/30 bg-amber-soft/70 p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <ShieldAlert size={18} className="text-amber-dark" />
-            <span className="text-xs text-amber-900 uppercase tracking-wider font-semibold">Pending Verification</span>
+            <span className="text-xs text-amber-900 font-semibold">Not checked yet</span>
           </div>
           <div className="font-serif-heading text-3xl font-bold text-navy">{unverified}</div>
         </div>
         <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle2 size={18} className="text-ieee" />
-            <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Total Audit Events</span>
+            <span className="text-xs text-slate-500 font-semibold">Total Audit Events</span>
           </div>
           <div className="font-serif-heading text-3xl font-bold text-navy">
             {allTransactions.reduce((s, t) => s + t.auditTrail.length, 0)}
@@ -45,8 +45,8 @@ export default function VerificationPage() {
 
       <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60">
-          <h2 className="font-serif-heading text-lg font-semibold text-navy">Integrity Hashes</h2>
-          <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">
+          <h2 className="font-serif-heading text-lg font-semibold text-navy">Record fingerprints</h2>
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             SHA-256 content hashes binding each audit trail to its transaction
           </p>
         </div>
@@ -57,11 +57,11 @@ export default function VerificationPage() {
                 <div className="flex items-center gap-2.5 mb-1">
                   <span className="text-sm font-semibold text-navy">{tx.id}</span>
                   {tx.verified ? (
-                    <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold uppercase tracking-wider">
-                      <ShieldCheck size={13} /> Verified
+                    <span className="inline-flex items-center gap-1 text-xs text-emerald font-semibold">
+                      <ShieldCheck size={13} /> Checked
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 text-xs text-amber-dark font-semibold uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1 text-xs text-amber-dark font-semibold">
                       <ShieldAlert size={13} /> Pending
                     </span>
                   )}

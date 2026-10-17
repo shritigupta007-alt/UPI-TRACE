@@ -4,42 +4,43 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: { DEFAULT: '#5F259F', dark: '#4A1C80', deep: '#2D0F57', light: '#F3ECFB', mid: '#8A5BC7' },
         // ── NCEA-SSEM Brand Tokens ──────────────────────────────
         navy: {
-          deep: '#0F1B3D',    // primary dark navy
-          DEFAULT: '#1B2A4A', // medium navy
-          mid: '#243557',     // mid navy
-          light: '#2E4270',   // light navy
-          muted: '#EAEFF8',   // light navy wash
+          deep: '#2D0F57',
+          DEFAULT: '#241540',
+          mid: '#3B2766',
+          light: '#5A4585',
+          muted: '#F3ECFB',
         },
         amber: {
-          DEFAULT: '#E8A838', // signature gold accent
-          dark: '#C48A20',    // deep amber
-          soft: '#FBF0D9',    // light warm amber wash
-          muted: '#F5D9A0',   // border amber
+          DEFAULT: '#F5A623',
+          dark: '#B7700A',
+          soft: '#FFF4DC',
+          muted: '#FBD98C',
         },
         ieee: {
-          DEFAULT: '#00629B', // signature IEEE blue
-          dark: '#004F7C',
-          light: '#E8F4FD',
-          mid: '#33A3DF',
+          DEFAULT: '#5F259F',
+          dark: '#4A1C80',
+          light: '#F3ECFB',
+          mid: '#8A5BC7',
         },
         emerald: {
-          DEFAULT: '#2E7D52', // emerald green
-          dark: '#215A3A',
-          light: '#E6F4EC',
+          DEFAULT: '#1E9E6A',
+          dark: '#157A50',
+          light: '#E4F6EE',
         },
         // Semantic tokens (Light Mode with Navy Accents)
-        background: '#F8FAFC',
-        foreground: '#0F1B3D',
+        background: '#F7F5FB',
+        foreground: '#241540',
         card: '#FFFFFF',
         'card-foreground': '#0F1B3D',
-        border: '#E2E8F0',
+        border: '#E8E2F2',
         muted: '#F1F5F9',
         'muted-foreground': '#64748B',
         secondary: '#F1F5F9',
         input: '#E2E8F0',
-        ring: '#E8A838',
+        ring: '#5F259F',
 
         // ── Backward-compatible Aliases ──────────────────────────
         // Mapping legacy dark-theme names to the NCEA-SSEM light/navy system
@@ -98,11 +99,18 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['"Space Grotesk"', '"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', '"Menlo"', 'monospace'],
+        serif: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'Menlo', 'monospace'],
       },
+      keyframes: {
+        'fade-in': { from: { opacity: 0 }, to: { opacity: 1 } },
+        'slide-up': { from: { opacity: 0, transform: 'translateY(12px)' }, to: { opacity: 1, transform: 'none' } },
+        'slide-in': { from: { transform: 'translateX(32px)', opacity: 0 }, to: { transform: 'none', opacity: 1 } },
+      },
+      animation: { 'fade-in': 'fade-in .2s ease-out', 'slide-up': 'slide-up .35s ease-out', 'slide-in': 'slide-in .25s ease-out', 'pulse-soft': 'pulse 2s ease-in-out infinite' },
+      transitionTimingFunction: { smooth: 'cubic-bezier(.4,0,.2,1)' },
       fontSize: {
         'display': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
         'heading': ['1.75rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
@@ -112,9 +120,9 @@ export default {
         'micro': ['0.6875rem', { lineHeight: '1.4', letterSpacing: '0.06em' }],
       },
       boxShadow: {
-        'elevated': '0 10px 30px -5px rgba(15, 27, 61, 0.1), 0 4px 12px -2px rgba(15, 27, 61, 0.05)',
-        'card': '0 2px 8px -1px rgba(15, 27, 61, 0.06), 0 1px 3px 0 rgba(15, 27, 61, 0.04)',
-        'subtle': '0 1px 2px 0 rgba(15, 27, 61, 0.05)',
+        'elevated': '0 10px 30px -5px rgba(45, 15, 87, 0.1), 0 4px 12px -2px rgba(45, 15, 87, 0.05)',
+        'card': '0 2px 8px -1px rgba(45, 15, 87, 0.06), 0 1px 3px 0 rgba(45, 15, 87, 0.04)',
+        'subtle': '0 1px 2px 0 rgba(45, 15, 87, 0.05)',
         'amber': '0 8px 24px -8px rgba(232, 168, 56, 0.35)',
       },
     },

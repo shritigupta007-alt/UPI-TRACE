@@ -34,7 +34,7 @@ export default function ActivityFeed({ items, limit }: ActivityFeedProps) {
               </span>
               <div className="text-sm font-medium text-slate-800 leading-snug">{item.summary}</div>
               <div className="flex items-center gap-2 mt-1">
-                <span className={`text-[10px] uppercase tracking-wider font-semibold ${cfg.color}`}>{cfg.label}</span>
+                <span className={`text-[10px] font-semibold ${cfg.color}`}>{cfg.label}</span>
                 <span className="text-xs text-slate-300">&middot;</span>
                 <span className="text-[11px] text-slate-500 font-mono font-medium">{item.ref}</span>
                 <span className="text-xs text-slate-300">&middot;</span>

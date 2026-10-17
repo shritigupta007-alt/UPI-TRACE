@@ -37,8 +37,8 @@ export default function TimelinePage() {
 
       <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60">
-          <h2 className="font-serif-heading text-lg font-semibold text-navy">Unified Audit Timeline</h2>
-          <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">
+          <h2 className="font-serif-heading text-lg font-semibold text-navy">Everything that happened, in order</h2>
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             {allEvents.length} events across {allTransactions.length} transactions
           </p>
         </div>

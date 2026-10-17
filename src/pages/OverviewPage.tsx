@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   Clock3,
   Flag,
-  Play,
   ArrowUpRight,
   ShieldCheck,
   FileText,
@@ -36,120 +35,112 @@ export default function OverviewPage({ onNavigate, onSelectTransaction }: Overvi
 
   return (
     <div className="space-y-6">
-      {/* ── NCEA-SSEM Inspired Navy Hero Banner ───────────────────────── */}
-      <div className="relative overflow-hidden rounded-2xl bg-navy-hero border border-navy-light/40 shadow-xl p-7 lg:p-9 text-white">
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-grid-white opacity-40 pointer-events-none" />
-
+      <div className="relative overflow-hidden rounded-3xl bg-navy-hero p-7 lg:p-10 text-white shadow-xl shadow-brand/20">
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
           <div className="max-w-xl">
-            <div className="flex items-center gap-2.5 mb-3.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber/40 bg-amber/15 px-3 py-1 text-xs text-amber font-semibold uppercase tracking-wider">
-                <span className="h-2 w-2 rounded-full bg-amber animate-pulse" />
-                Demo Workspace Active
-              </span>
-              <span className="text-xs text-white/50 font-mono">v0.1.0 &middot; Prototype</span>
-            </div>
-            <h1 className="font-serif-heading text-3xl sm:text-4xl lg:text-[2.65rem] font-bold text-white leading-tight mb-4 tracking-tight">
-              Consent &amp; Context Layer for Incoming UPI Payments
+            <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight mb-3">
+              Got money from someone you don&apos;t know? Put your side on record.
             </h1>
-            <p className="text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
-              UPI-TRACE preserves the recipient&apos;s declared response and transaction context in a
-              timestamped audit trail. It does not determine whether a payment is bribery or replace
-              judicial scrutiny.
+            <p className="text-base text-white/85 leading-relaxed mb-6">
+              UPI-TRACE saves what you say about a payment, with the date and time. It does not decide
+              whether a payment is wrong, and it does not replace a court.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <button
-                onClick={() => onNavigate('transactions')}
-                className="group inline-flex items-center gap-2 rounded-lg bg-amber px-5 py-2.5 text-sm font-semibold text-navy-deep shadow-md shadow-amber/25 transition-all duration-200 hover:brightness-105 active:scale-95"
+                onClick={() => onNavigate('response')}
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-brand shadow-md transition active:scale-95 hover:bg-brand-light"
               >
-                <Play size={16} className="fill-navy-deep" />
-                Launch Interactive Demo
-                <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <Clock3 size={16} />
+                Reply to {stats.awaitingResponse} waiting {stats.awaitingResponse === 1 ? 'payment' : 'payments'}
               </button>
               <button
                 onClick={() => onNavigate('reports')}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/25 bg-white/5 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 hover:border-white/40 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
               >
                 <FileText size={16} />
-                View Evidence Reports
+                See reports
               </button>
             </div>
           </div>
-
-          {/* Stat panel in Hero */}
-          <div className="flex-shrink-0 w-full lg:w-auto">
-            <div className="grid grid-cols-2 gap-px rounded-xl overflow-hidden border border-white/15 bg-white/10 backdrop-blur-md shadow-lg">
-              <div className="bg-navy-deep/80 px-5 py-4">
-                <div className="text-[11px] font-medium text-white/60 uppercase tracking-wider mb-1">Total Tracked Value</div>
-                <div className="font-serif-heading text-2xl font-bold text-white tabular-nums">{formatCurrency(totalValue)}</div>
+          <div className="grid grid-cols-2 gap-3 w-full lg:w-[360px] flex-shrink-0">
+            {[
+              { l: 'Money received', v: formatCurrency(totalValue) },
+              { l: 'Needs a closer look', v: formatCurrency(flaggedValue) },
+              { l: 'Records checked', v: `${allTransactions.filter((t) => t.verified).length} of ${allTransactions.length}` },
+              { l: 'Events saved', v: String(allTransactions.reduce((sum, t) => sum + t.auditTrail.length, 0)) },
+            ].map((x) => (
+              <div key={x.l} className="rounded-2xl bg-white/12 border border-white/20 px-4 py-3.5 backdrop-blur">
+                <div className="text-xs text-white/70 mb-1">{x.l}</div>
+                <div className="text-xl font-extrabold tabular-nums">{x.v}</div>
               </div>
-              <div className="bg-navy-deep/80 px-5 py-4">
-                <div className="text-[11px] font-medium text-white/60 uppercase tracking-wider mb-1">Flagged Value</div>
-                <div className="font-serif-heading text-2xl font-bold text-red-400 tabular-nums">{formatCurrency(flaggedValue)}</div>
-              </div>
-              <div className="bg-navy-deep/80 px-5 py-4">
-                <div className="text-[11px] font-medium text-white/60 uppercase tracking-wider mb-1">Integrity Verified</div>
-                <div className="font-serif-heading text-2xl font-bold text-emerald-400 tabular-nums">
-                  {allTransactions.filter((t) => t.verified).length}
-                  <span className="text-white/40 text-lg font-normal">/{allTransactions.length}</span>
-                </div>
-              </div>
-              <div className="bg-navy-deep/80 px-5 py-4">
-                <div className="text-[11px] font-medium text-white/60 uppercase tracking-wider mb-1">Audit Events</div>
-                <div className="font-serif-heading text-2xl font-bold text-amber tabular-nums">
-                  {allTransactions.reduce((sum, t) => sum + t.auditTrail.length, 0)}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-navy mb-4">How it works</h2>
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { icon: ArrowLeftRight, t: 'A payment arrives', d: 'We note who sent it, how much, and whether you have dealt with them before.' },
+            { icon: CheckCircle2, t: 'You reply', d: 'Say if you know the sender, accept it, or return it. Your words are saved as you wrote them.' },
+            { icon: ShieldCheck, t: 'The record is sealed', d: 'A digital fingerprint is added, so any later change to the record can be spotted.' },
+          ].map((s, n) => (
+            <li key={s.t} className="flex gap-3.5 rounded-xl bg-brand-light/60 p-4">
+              <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-brand text-white"><s.icon size={18} /></span>
+              <div>
+                <div className="text-sm font-bold text-navy">Step {n + 1}: {s.t}</div>
+                <p className="text-sm text-slate-600 mt-0.5 leading-relaxed">{s.d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
 
       {/* ── Metric Stat Cards ────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
-          label="Total Simulated Transactions"
+          label="Payments received"
           value={stats.total}
           icon={<ArrowLeftRight size={20} strokeWidth={2} />}
           accent="sage"
-          trend={{ value: 'Last 7 days', direction: 'neutral' }}
+          trend={{ value: 'This week', direction: 'neutral' }}
           delay={0}
         />
         <StatCard
-          label="Responses Recorded"
+          label="Replied"
           value={stats.responsesRecorded}
           icon={<CheckCircle2 size={20} strokeWidth={2} />}
           accent="gold"
-          trend={{ value: `${Math.round((stats.responsesRecorded / stats.total) * 100)}% response rate`, direction: 'up' }}
+          trend={{ value: `${Math.round((stats.responsesRecorded / stats.total) * 100)}% done`, direction: 'up' }}
           delay={60}
         />
         <StatCard
-          label="Awaiting Response"
+          label="Waiting for your reply"
           value={stats.awaitingResponse}
           icon={<Clock3 size={20} strokeWidth={2} />}
           accent="amber"
-          trend={{ value: 'Action required', direction: 'neutral' }}
+          trend={{ value: 'Reply soon', direction: 'neutral' }}
           delay={120}
         />
         <StatCard
-          label="Flagged for Review"
+          label="Needs a closer look"
           value={stats.flaggedForReview}
           icon={<Flag size={20} strokeWidth={2} />}
           accent="red"
-          trend={{ value: 'High priority', direction: 'down' }}
+          trend={{ value: 'Look first', direction: 'down' }}
           delay={180}
         />
       </div>
 
       {/* ── Main Content Grid ────────────────────────────────────────── */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Recent Transactions Table */}
+        {/* Recent payments Table */}
         <div className="xl:col-span-2 rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/60">
             <div>
-              <h2 className="font-serif-heading text-lg font-semibold text-navy">Recent Transactions</h2>
-              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">Latest incoming payments &amp; responses</p>
+              <h2 className="font-serif-heading text-lg font-semibold text-navy">Recent payments</h2>
+              <p className="text-xs text-slate-500 font-medium mt-0.5">Newest payments and your replies</p>
             </div>
             <button
               onClick={() => onNavigate('transactions')}
@@ -166,11 +157,11 @@ export default function OverviewPage({ onNavigate, onSelectTransaction }: Overvi
           />
         </div>
 
-        {/* Activity Feed */}
+        {/* Latest activity */}
         <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/60">
-            <h2 className="font-serif-heading text-lg font-semibold text-navy">Activity Feed</h2>
-            <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">Real-time workspace events</p>
+            <h2 className="font-serif-heading text-lg font-semibold text-navy">Latest activity</h2>
+            <p className="text-xs text-slate-500 font-medium mt-0.5">What just happened</p>
           </div>
           <div className="px-6 py-5 max-h-[420px] overflow-y-auto scrollbar-thin">
             <ActivityFeed items={activityFeed} limit={8} />
@@ -183,22 +174,22 @@ export default function OverviewPage({ onNavigate, onSelectTransaction }: Overvi
         <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6">
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h2 className="font-serif-heading text-lg font-semibold text-navy">Response Status Distribution</h2>
-              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">How recipients have engaged</p>
+              <h2 className="font-serif-heading text-lg font-semibold text-navy">How you've replied</h2>
+              <p className="text-xs text-slate-500 font-medium mt-0.5">Your replies so far</p>
             </div>
             <button
               onClick={() => onNavigate('response')}
               className="text-sm text-ieee hover:text-ieee-dark transition-colors font-semibold flex items-center gap-1"
             >
-              Manage <ArrowUpRight size={14} />
+              See replies <ArrowUpRight size={14} />
             </button>
           </div>
           <div className="space-y-3.5">
             {[
-              { label: 'Recorded', count: responseBreakdown.recorded, color: 'bg-emerald', text: 'text-emerald' },
-              { label: 'Acknowledged', count: responseBreakdown.acknowledged, color: 'bg-ieee', text: 'text-ieee' },
-              { label: 'Declined & Returned', count: responseBreakdown.declined, color: 'bg-amber', text: 'text-amber-dark' },
-              { label: 'Pending', count: responseBreakdown.pending, color: 'bg-red-500', text: 'text-red-600' },
+              { label: 'Replied', count: responseBreakdown.recorded, color: 'bg-emerald', text: 'text-emerald' },
+              { label: 'Accepted', count: responseBreakdown.acknowledged, color: 'bg-ieee', text: 'text-ieee' },
+              { label: 'Returned to sender', count: responseBreakdown.declined, color: 'bg-amber', text: 'text-amber-dark' },
+              { label: 'Waiting for reply', count: responseBreakdown.pending, color: 'bg-red-500', text: 'text-red-600' },
             ].map((row) => {
               const pct = (row.count / stats.total) * 100;
               return (
@@ -222,8 +213,8 @@ export default function OverviewPage({ onNavigate, onSelectTransaction }: Overvi
         <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6">
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h2 className="font-serif-heading text-lg font-semibold text-navy">Awaiting Response</h2>
-              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-0.5">Transactions needing attention</p>
+              <h2 className="font-serif-heading text-lg font-semibold text-navy">Waiting for your reply</h2>
+              <p className="text-xs text-slate-500 font-medium mt-0.5">Payments waiting on you</p>
             </div>
             <span className="inline-flex items-center justify-center h-7 px-3 rounded-full border border-amber/30 bg-amber-soft text-amber-dark text-xs font-semibold">
               {stats.awaitingResponse} pending

@@ -17,7 +17,7 @@ export default function RecentTransactionsTable({ transactions, onSelect, limit,
     <div className="overflow-x-auto scrollbar-thin">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="border-b border-slate-200 bg-slate-50/75 text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+          <tr className="border-b border-slate-200 bg-slate-50/75 text-[11px] text-slate-500 font-semibold">
             <th className="px-5 py-3">Transaction</th>
             <th className="px-5 py-3">Sender</th>
             <th className="px-5 py-3 text-right">Amount</th>
@@ -46,7 +46,7 @@ export default function RecentTransactionsTable({ transactions, onSelect, limit,
               </td>
               <td className="px-5 py-3.5 text-right">
                 <div className="text-sm font-bold text-navy tabular-nums">{formatCurrency(tx.amount)}</div>
-                <div className="text-[10px] font-semibold text-slate-400 uppercase mt-0.5 tracking-wider">{tx.channel}</div>
+                <div className="text-[10px] font-semibold text-slate-400 mt-0.5">{tx.channel}</div>
               </td>
               <td className="px-5 py-3.5 hidden md:table-cell">
                 <ResponseBadge status={tx.responseStatus} size="xs" />
@@ -78,7 +78,7 @@ export default function RecentTransactionsTable({ transactions, onSelect, limit,
             onClick={() => onNavigate('transactions')}
             className="flex items-center gap-1.5 text-xs text-ieee hover:text-ieee-dark transition-colors font-semibold"
           >
-            View all transactions
+            See all payments
             <ArrowUpRight size={13} />
           </button>
         </div>
